@@ -40,12 +40,12 @@ namespace ZetiAssignment.MVC.Logic
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage Res = await client.GetAsync(action);
+                HttpResponseMessage Response = await client.GetAsync(action);
                 
-                if (Res.IsSuccessStatusCode)
+                if (Response.IsSuccessStatusCode)
                 {
 
-                    var ObjResponse = Res.Content.ReadAsStringAsync().Result;
+                    var ObjResponse = Response.Content.ReadAsStringAsync().Result;
                     return JsonSerializer.Deserialize<T>(ObjResponse);
 
                 }
